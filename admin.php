@@ -53,7 +53,7 @@
                             <label for="expense">Dépense</label>
                         </div>
                         <div class="input-field col s6">
-                            <input type="text" class="validate" name="ratio" placeholder="Veuillez entrer un ratio pour cette dépense" value="<?php echo $ratio; ?>">
+                            <input type="number" class="validate" name="ratio" placeholder="Veuillez entrer un ratio pour cette dépense" value="<?php echo $ratio; ?>">
                             <label for="ratio">Ratio</label>
                         </div>
                         <?php
