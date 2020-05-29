@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php require_once 'process.php' ?>
+    <?php require 'model.php' ?>
 
     <?php
     connectDB();

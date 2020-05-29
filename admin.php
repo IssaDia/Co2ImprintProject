@@ -20,7 +20,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <table class="table highlight centered striped">
+            <table class="table highlight centered striped col-md-12">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -35,7 +35,7 @@
                         <td><?php echo $single_expense['ratio'] ?></td>
                         <td>
                             <a href="admin.php?edit=<?php echo $single_expense['id']; ?>" class="btn btn-info amber accent-3" name="edit">Edit</a>
-                            <a href="process.php?delete=<?php echo $single_expense['id']; ?>" class="btn btn-danger red accent-4" name="delete">Delete</a>
+                            <a href="model.php?delete=<?php echo $single_expense['id']; ?>" class="btn btn-danger red accent-4" name="delete">Delete</a>
                         </td>
 
                     </tr>
@@ -46,15 +46,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <form action='process.php' method='POST'>
+                    <form action='model.php' method='POST'>
                         <input type='hidden' name='id' value=<?php echo $id; ?>>
                         <div class="input-field col s6">
                             <input type="text" class="validate" name="expense" placeholder="Veuillez entrer un nom pour cette dépense" value="<?php echo $expense; ?>">
                             <label for="expense">Dépense</label>
                         </div>
                         <div class="input-field col s6">
-
-                            <input type="text" class="form-control" name="ratio" placeholder="Veuillez entrer un ratio pour cette dépense" value="<?php echo $ratio; ?>">
+                            <input type="text" class="validate" name="ratio" placeholder="Veuillez entrer un ratio pour cette dépense" value="<?php echo $ratio; ?>">
                             <label for="ratio">Ratio</label>
                         </div>
                         <?php

@@ -1,21 +1,21 @@
+<?php include 'controller/controller.php' ?>
+
 <?php
 
-include("functions/functions.php");
 session_start();
 
 $expense = '';
 $ratio = '';
-$update = false;
 $id = 0;
-$co2_footsprint = '';
+$result = '';
 $calculated = false;
-$result='';
+
+
 
 if (isset($_POST['submit'])) {
 
     $expense = filter_var($_POST['expense'], FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE);
     $ratio = filter_var($_POST['ratio'], FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE);
-
     add_expense_to_database($expense, $ratio);
     $_SESSION['message'] = "Votre dépense a bien été ajoutée";
     $_SESSION['msg_type'] = "success";
@@ -29,11 +29,10 @@ if (isset($_GET['delete'])) {
     delete_expense_from_database($id);
     $_SESSION['message'] = "Votre dépense a bien été supprimée";
     $_SESSION['msg_type'] = "danger";
-
     header("location: admin.php");
 };
 
-
+$update = false;
 if (isset($_GET['edit'])) {
     $update = true;
     $id = $_GET['edit'];
@@ -56,10 +55,15 @@ if (isset($_POST['update'])) {
 
 
 if (isset($_POST['calculate'])) {
-
-    $expense =  $_POST['expense_select'];
-    $amount =  $_POST['amount'];
-    $result = get_ratio_of_expense($expense);
     $calculated = true;
-    header("location: index.php");
-};
+    $expense_name = filter_var($_POST['expense_selected'], FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE);
+    $amount = filter_var($_POST['amount'], FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE);
+    $result = get_ratio_of_expense($expense_name);
+    $ratio_number = $result['ratio'];
+    $footprint = $amount * ($ratio_number / 1000);
+    $_SESSION['calculated'] = $calculated;
+    $_SESSION['footprint'] = $footprint;
+    header("location: index.php?footprint=$footprint");
+
+}
+

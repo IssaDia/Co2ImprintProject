@@ -54,7 +54,7 @@ function get_expense_to_edit($id)
 {
 
     $bdd = connectDB();
-    $sql = "SELECT * FROM expense_table where id=:id";
+    $sql = "SELECT * FROM expense_table WHERE id='$id'";
     $req = $bdd->prepare($sql);
     $req->bindValue(':id', $id, PDO::PARAM_INT);
     $req->execute();
@@ -75,16 +75,14 @@ function update_expense_from_database($id, $expense, $ratio)
     $req->closeCursor();
 }
 
-
-function get_ratio_of_expense($expense)
+function get_ratio_of_expense($expense_name)
 {
-
     $bdd = connectDB();
-    $sql = "SELECT ratio FROM expense_table WHERE expense_type=$expense";
+    $sql = "SELECT ratio FROM expense_table WHERE expense_type ='$expense_name'";
     $req = $bdd->prepare($sql);
-    $req->bindValue(':expense', $expense, PDO::PARAM_STR);
+    $req->bindValue(':expense_name', $expense_name, PDO::PARAM_STR);
     $req->execute();
-    $ratio = $req->fetch(PDO::FETCH_ORI_FIRST);
+    $ratio = $req->fetch();
     $req->closeCursor();
     return $ratio;
 }
