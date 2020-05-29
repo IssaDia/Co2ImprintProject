@@ -1,7 +1,7 @@
 ### KelvinProject
 Test for Kelvin (PHP and MySQL)
 
-Applcation to check on our CO2 footprint depending on our conveyance
+Applcation to check on our CO2 footprint depending on your conveyance
 
 **To Set Up the project**
 
