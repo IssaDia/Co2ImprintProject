@@ -1,5 +1,5 @@
 ### K*****Project
-Test for Kelvin (PHP and MySQL)
+Test for K***** (PHP and MySQL)
 
 Applcation to check on our CO2 footprint depending on your conveyance
 
