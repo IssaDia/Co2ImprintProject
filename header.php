@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php require 'model.php' ?>
+    <?php require 'controller.php' ?>
 
     <?php
     connectDB();

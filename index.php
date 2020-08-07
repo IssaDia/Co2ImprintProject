@@ -10,7 +10,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-12 calculate">
-        <form action='model.php' method='POST'>
+        <form action='controller.php' method='POST'>
             <label for="expense_type">Expense Type</label>
             <select class="form-control select" name='expense_selected'>
                 <?php
